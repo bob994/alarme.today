@@ -1,4 +1,9 @@
+'use strict';
+
+var path = require('path');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+
+var packageJson = require('./package.json');
 
 var babelLoader = {
   loader: 'babel-loader',
@@ -14,6 +19,7 @@ var babelLoader = {
       ],
       'es2016',
     ],
+    plugins: ['emotion'],
   },
 };
 
@@ -22,7 +28,9 @@ module.exports = {
   devtool: 'source-map',
   entry: './src/index.tsx',
   output: {
-    filename: 'bundle.js',
+    path: path.resolve(__dirname, './dist/'),
+    filename: '[name].js',
+    chunkFilename: '[chunkhash].js',
   },
   module: {
     rules: [
