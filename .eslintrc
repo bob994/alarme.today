@@ -1,0 +1,20 @@
+{
+  "parserOptions": {
+    "ecmaVersion": 6
+  },
+  "extends": [
+    "airbnb-typescript",
+    "airbnb/hooks",
+    "plugin:@typescript-eslint/recommended",
+    "prettier",
+    "prettier/@typescript-eslint",
+    "prettier/react"
+  ],
+  "env": {
+    "browser": true
+  },
+  "rules": {
+    "react/prop-types": "off",
+    "react/destructuring-assignment": "off"
+  }
+}
