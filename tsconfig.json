@@ -4,11 +4,12 @@
     "sourceMap": true,
     "module": "esnext",
     "target": "es5",
-    "jsx": "react",
+    "jsx": "preserve",
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "lib": ["dom", "dom.iterable", "esnext"],
+    "moduleResolution": "Node",
     "resolveJsonModule": true,
     "isolatedModules": true
   }

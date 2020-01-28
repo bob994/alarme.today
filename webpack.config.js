@@ -3,23 +3,21 @@
 var path = require('path');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
-var packageJson = require('./package.json');
-
 var babelLoader = {
   loader: 'babel-loader',
   options: {
     cacheDirectory: true,
     presets: [
-      'react',
+      '@babel/preset-react',
+      '@babel/preset-env',
       [
-        'es2015',
+        '@emotion/babel-preset-css-prop',
         {
-          modules: false,
+          autoLabel: true,
+          labelFormat: '[local]',
         },
       ],
-      'es2016',
     ],
-    plugins: ['emotion'],
   },
 };
 
@@ -65,7 +63,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './src/index.html',
+      template: './index.html',
     }),
   ],
 };
