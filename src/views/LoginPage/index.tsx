@@ -1,19 +1,18 @@
 import { FC, useState, FormEventHandler, useContext } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 
-import AuthPage from '../../components/AuthPage';
-import Input from '../../components/Input';
-import Button from '../../components/Button';
+import useFormFields from 'hooks/useFormFields';
+import validateEmail from 'utils/validateEmail';
+import auth from 'services/api/auth';
+import { errorNotification } from 'services/notification';
 
-import {
-  greatingMessage,
-  redirectMessage,
-} from '../../components/AuthPage/style';
+import AuthPage from 'components/AuthPage';
+import Input from 'components/Input';
+import Button from 'components/Button';
+
+import { greatingMessage, redirectMessage } from 'components/AuthPage/style';
+
 import { GlobalContext } from '../../globalContext';
-import auth from '../../services/api/auth';
-import useFormFields from '../../hooks/useFormFields';
-import validateEmail from '../../utils/validateEmail';
-import { errorNotification } from '../../services/notification';
 
 type State = 'idle' | 'submitting';
 
