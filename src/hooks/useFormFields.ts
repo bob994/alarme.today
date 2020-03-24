@@ -1,13 +1,8 @@
 import { useState, ChangeEventHandler } from 'react';
 
-type ChangeFieldHandler = ChangeEventHandler<
-  HTMLInputElement | HTMLSelectElement
->;
+type ChangeFieldHandler = ChangeEventHandler<HTMLInputElement | HTMLSelectElement>;
 
-type Validation<T> = Record<
-  keyof T,
-  { validator: (v: string) => boolean; error: string }
->;
+type Validation<T> = Record<keyof T, { validator: (v: string) => boolean; error: string }>;
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 function useFormFields<T extends { [key: string]: string }>(
@@ -41,8 +36,7 @@ function useFormFields<T extends { [key: string]: string }>(
     }
   };
 
-  const initialize = (state: Partial<T>): void =>
-    setFields({ ...fields, ...state });
+  const initialize = (state: Partial<T>): void => setFields({ ...fields, ...state });
 
   return [fields, handleFieldChange, errors, initialize] as const;
 }

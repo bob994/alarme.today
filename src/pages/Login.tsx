@@ -6,13 +6,13 @@ import validateEmail from 'utils/validateEmail';
 import auth from 'services/api/auth';
 import { errorNotification } from 'services/notification';
 
-import AuthPage from 'components/AuthPage';
 import Input from 'components/Input';
 import Button from 'components/Button';
 
-import { greatingMessage, redirectMessage } from 'components/AuthPage/style';
+import AuthPage from '../templates/Auth';
+import { greatingMessage, redirectMessage } from '../templates/Auth.style';
 
-import { GlobalContext } from '../../globalContext';
+import { GlobalContext } from '../globalContext';
 
 type State = 'idle' | 'submitting';
 
@@ -32,14 +32,11 @@ const validation = {
   },
 };
 
-const LoginPage: FC = () => {
+const Login: FC = () => {
   const context = useContext(GlobalContext);
   const history = useHistory();
   const [state, setState] = useState<State>('idle');
-  const [fields, handleFieldChange, errors] = useFormFields(
-    formFields,
-    validation
-  );
+  const [fields, handleFieldChange, errors] = useFormFields(formFields, validation);
 
   const { email, password } = fields;
 
@@ -102,11 +99,7 @@ const LoginPage: FC = () => {
           error={errors.password}
         />
 
-        <Button
-          disabled={isButtonDisabled}
-          type="submit"
-          css={{ marginTop: 26 }}
-        >
+        <Button disabled={isButtonDisabled} type="submit" css={{ marginTop: 26 }}>
           Login
         </Button>
       </form>
@@ -114,4 +107,4 @@ const LoginPage: FC = () => {
   );
 };
 
-export default LoginPage;
+export default Login;

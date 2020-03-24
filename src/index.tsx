@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { ToastContainer, ToastContainerProps } from 'react-toastify';
@@ -6,12 +6,14 @@ import { Global as GlobalStyles } from '@emotion/core';
 
 import 'react-toastify/dist/ReactToastify.css';
 
-import RegisterPage from './views/RegisterPage';
-import LoginPage from './views/LoginPage';
+import useUserContext from 'hooks/useUserContext';
+
+import Home from './pages/Home';
+import Register from './pages/Register';
+import Login from './pages/Login';
 
 import { GlobalContextProvider } from './globalContext';
 import globalStyles from './globalStyles';
-import HomePage from './views/HomePage';
 
 const toastProps: ToastContainerProps = {
   hideProgressBar: true,
@@ -19,14 +21,7 @@ const toastProps: ToastContainerProps = {
 };
 
 const App: FC = () => {
-  const [userId, setUserId] = useState<string>('');
-
-  const setId = (id: string): void => setUserId(id);
-
-  const contextValue = {
-    userId,
-    setId,
-  };
+  const contextValue = useUserContext();
 
   return (
     <GlobalContextProvider value={contextValue}>
@@ -35,13 +30,13 @@ const App: FC = () => {
       <Router>
         <Switch>
           <Route path="/" exact>
-            <HomePage />
+            <Home />
           </Route>
           <Route path="/register">
-            <RegisterPage />
+            <Register />
           </Route>
           <Route path="/login">
-            <LoginPage />
+            <Login />
           </Route>
         </Switch>
       </Router>

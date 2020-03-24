@@ -1,8 +1,8 @@
-import React, { useContext } from 'react';
+import React, { useContext, FC } from 'react';
 import { useHistory } from 'react-router-dom';
-import { GlobalContext } from '../../globalContext';
+import { GlobalContext } from '../globalContext';
 
-const HomePage = () => {
+const Home: FC = () => {
   const history = useHistory();
   const context = useContext(GlobalContext);
 
@@ -11,4 +11,4 @@ const HomePage = () => {
   return <div>Pocetna</div>;
 };
 
-export default HomePage;
+export default Home;

@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 
-import * as style from './style';
+import * as style from './Auth.style';
 
 const AuthPage: FC = ({ children }) => {
   return (
