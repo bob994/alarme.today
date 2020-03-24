@@ -1,12 +1,14 @@
 /* eslint-disable react/button-has-type */
 import { FC, ButtonHTMLAttributes } from 'react';
 
-import buttonStyle from './style';
+import * as buttonStyle from './style';
 
-type Props = ButtonHTMLAttributes<HTMLButtonElement>;
+interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
+  isLink?: boolean;
+}
 
-const Button: FC<Props> = ({ type = 'button', ...rest }) => (
-  <button css={buttonStyle} {...rest} type={type} />
+const Button: FC<Props> = ({ type = 'button', isLink = false, ...rest }) => (
+  <button css={isLink ? buttonStyle.isLink : buttonStyle.button} {...rest} type={type} />
 );
 
 export default Button;
